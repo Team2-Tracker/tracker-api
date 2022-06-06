@@ -2,10 +2,9 @@
 require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
-const bugsController = require("./Controllers/bugs");
-const usersController = require("./Controllers/users");
+const bugsController = require("./Controllers/bugs.js");
+const usersController = require("./Controllers/users.js");
 const cors = require("cors");
-
 
 // Define port
 const PORT = process.env.PORT;
