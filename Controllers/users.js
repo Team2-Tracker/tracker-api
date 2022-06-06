@@ -1,6 +1,6 @@
 const express = require("express");
-const User = require("./../Models/user.js");
-
+// const Bug = require("../Models/bug.js");
+const User = require("../Models/user.js");
 const router = express.Router();
 
 // GET /users
@@ -21,5 +21,23 @@ router.patch("/:id", function (req, res) {
     res.status(200).json({ users: users })
   );
 });
+
+//PUT user:id and add bug:id
+
+// router.put("/:userId/addBugs/:bugId", (req, res) => {
+//   const bug = Bug.findById(req.params.bugId);
+//   const user = User.findByIdAndUpdate(
+//     req.params.userId,
+//     { $push: { bugs: bug._id } },
+//     { new: true }
+//   );
+//   res.json(user);
+// });
+
+// router.get("/", (req, res) => {
+//   const data = User.find({}).populate("bugs");
+
+//   res.json({ data: data });
+// });
 
 module.exports = router;

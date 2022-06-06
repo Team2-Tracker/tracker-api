@@ -5,6 +5,12 @@ const userSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   bugs: String,
+  // bugs: [
+  //   {
+  //     ref: "Bug",
+  //     type: mongoose.Schema.Types.ObjectId,
+  //   },
+  // ],
 });
 
 module.exports = mongoose.model("User", userSchema);
