@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
+const cors = require("cors");
 const bugsController = require("./controllers/bugs");
 
 // Define port
@@ -12,6 +13,9 @@ const app = express();
 
 // Accept json as req.body
 app.use(express.json());
+
+//App will use CORS
+app.use(cors());
 
 // Use logger middleware
 app.use(logger("dev"));
