@@ -2,7 +2,8 @@
 require("dotenv").config();
 const express = require("express");
 const logger = require("morgan");
-const bugsController = require("./controllers/bugs");
+const bugsController = require("./Controllers/bugs");
+const usersController = require("./Controllers/users");
 
 // Define port
 const PORT = process.env.PORT;
@@ -18,6 +19,9 @@ app.use(logger("dev"));
 
 // Bugs routes
 app.use("/bugs", bugsController);
+
+// Users routes
+app.use("/users", usersController);
 
 // Start app on port
 app.listen(PORT, () => {

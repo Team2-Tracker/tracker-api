@@ -1,5 +1,4 @@
 const express = require("express");
-const bug = require("./../models/bug.js");
 const Bug = require("./../models/bug.js");
 
 const router = express.Router();
