@@ -4,6 +4,8 @@ const express = require("express");
 const logger = require("morgan");
 const bugsController = require("./Controllers/bugs");
 const usersController = require("./Controllers/users");
+const cors = require("cors");
+
 
 // Define port
 const PORT = process.env.PORT;
@@ -13,6 +15,9 @@ const app = express();
 
 // Accept json as req.body
 app.use(express.json());
+
+//App will use CORS
+app.use(cors());
 
 // Use logger middleware
 app.use(logger("dev"));

@@ -1,13 +1,13 @@
-const mongoose = require('./../connection')
+const mongoose = require("./../db/connection.js");
 
 const bugSchema = new mongoose.Schema({
-    bugName: String,
-    issues: String,
-    priority: Number,
-    timeEstimate: Number,
-    dateDue: Date,
-    createdDate: Date,
-    assigned: String,
-})
+  bugName: String,
+  issues: String,
+  priority: Number,
+  timeEstimate: Number,
+  dateDue: Date,
+  createdDate: Date,
+  assigned: String,
+});
 
-module.exports = mongoose.model('Bug', bugSchema)
+module.exports = mongoose.model("Bug", bugSchema);
