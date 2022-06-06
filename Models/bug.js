@@ -1,4 +1,4 @@
-const mongoose = require("./../connection");
+const mongoose = require("./../db/connection.js");
 
 const bugSchema = new mongoose.Schema({
   bugName: String,
