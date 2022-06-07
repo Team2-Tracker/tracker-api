@@ -1,101 +1,112 @@
 [
-    {
-        "bugName": "Bug1",
-        "issues":  "Login Password Reset" ,
-        "priority": 2,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-11",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug2",
-        "issues":  "red" ,
-        "priority": 2,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-12",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug3",
-        "issues":  "red" ,
-        "priority": 1,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-13",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug4",
-        "issues":  "red" ,
-        "priority": 3,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-13",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug5",
-        "issues":  "red" ,
-        "priority": 2,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-13",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug6",
-        "issues":  "red" ,
-        "priority": 3,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-18",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug7",
-        "issues":  "red" ,
-        "priority": 3,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-18",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug8",
-        "issues":  "red" ,
-        "priority": 1,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-23",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug9",
-        "issues":  "red" ,
-        "priority": 2,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-23",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug10",
-        "issues":  "red" ,
-        "priority": 1,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-28",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    },
-    {
-        "bugName": "Bug11",
-        "issues":  "red" ,
-        "priority": 3,
-        "timeEstimate": 12,
-        "dateDue": "2022-06-28",
-        "createdDate": "2022-06-06",
-        "assigned": ""
-    }
+	{
+		"bugName": "Bug1",
+		"issues": "Login Password Reset",
+		"priority": 2,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-11",
+		"dateCreated": "2022-06-06",
+		"assigned": "Shanti",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug2",
+		"issues": "red",
+		"priority": 2,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-12",
+		"dateCreated": "2022-06-06",
+		"assigned": "Alex",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug3",
+		"issues": "red",
+		"priority": 1,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-13",
+		"dateCreated": "2022-06-06",
+		"assigned": "Irais",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug4",
+		"issues": "red",
+		"priority": 3,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-13",
+		"dateCreated": "2022-06-06",
+		"assigned": "Alexandra",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug5",
+		"issues": "red",
+		"priority": 2,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-13",
+		"dateCreated": "2022-06-06",
+		"assigned": "Shanti",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug6",
+		"issues": "red",
+		"priority": 3,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-18",
+		"dateCreated": "2022-06-06",
+		"assigned": "none",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug7",
+		"issues": "red",
+		"priority": 3,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-18",
+		"dateCreated": "2022-06-06",
+		"assigned": "none",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug8",
+		"issues": "red",
+		"priority": 1,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-23",
+		"dateCreated": "2022-06-06",
+		"assigned": "Alex",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug9",
+		"issues": "red",
+		"priority": 2,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-23",
+		"dateCreated": "2022-06-06",
+		"assigned": "Irais",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug10",
+		"issues": "red",
+		"priority": 1,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-28",
+		"dateCreated": "2022-06-06",
+		"assigned": "Alexandra",
+		"isActive": true
+	},
+	{
+		"bugName": "Bug11",
+		"issues": "red",
+		"priority": 3,
+		"timeEstimate": 12,
+		"dateDue": "2022-06-28",
+		"dateCreated": "2022-06-06",
+		"assigned": "none",
+		"isActive": true
+	}
 ]
