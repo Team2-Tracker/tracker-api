@@ -8,7 +8,7 @@ const bugSchema = new mongoose.Schema({
 	dateDue: Date,
 	dateCreated: Date,
 	assigned: String,
-	isActive: true
+	isActive: Boolean
 })
 
 module.exports = mongoose.model('Bug', bugSchema)
