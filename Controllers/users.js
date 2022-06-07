@@ -1,7 +1,14 @@
 const express = require("express");
+const req = require("express/lib/request");
 // const Bug = require("../Models/bug.js");
 const User = require("../Models/user.js");
 const router = express.Router();
+
+router.get("/", (req, res) => {
+  const data = User.find({}).populate("bugs");
+
+  res.json({ data: data });
+});
 
 // GET /users
 router.get("/", function (req, res) {
@@ -22,22 +29,19 @@ router.patch("/:id", function (req, res) {
   );
 });
 
-//PUT user:id and add bug:id
-
-// router.put("/:userId/addBugs/:bugId", (req, res) => {
-//   const bug = Bug.findById(req.params.bugId);
-//   const user = User.findByIdAndUpdate(
-//     req.params.userId,
-//     { $push: { bugs: bug._id } },
-//     { new: true }
-//   );
-//   res.json(user);
-// });
-
-// router.get("/", (req, res) => {
-//   const data = User.find({}).populate("bugs");
-
-//   res.json({ data: data });
-// });
+// Write the route to update an author
+router.patch("/:userId/bugs/:bugsId", (req, res) => {
+  Bug.findByIdAndUpdate(
+    req.params.bugId,
+    { user: req.params.userId },
+    { new: true }
+  ).then(() => {
+    User.findByIdAndUpdate(
+      req.params.userId,
+      { $push: { bugs: req.params.bugId } },
+      { new: true }
+    ).then((user) => res.status(200).json({ user: user }));
+  });
+});
 
 module.exports = router;
