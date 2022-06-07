@@ -27,6 +27,8 @@ app.use("/bugs", bugsController);
 // Users routes
 app.use("/users", usersController);
 
+app.set("port", process.env.PORT || 8080);
+
 // Start app on port
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
