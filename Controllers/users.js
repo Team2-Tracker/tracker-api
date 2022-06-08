@@ -51,7 +51,7 @@ router.patch("/:id", (req, res) => {
   );
 });
 
-// Write the route to create an user:
+// POST /users Write the route to create an user:
 router.post("/", (req, res) => {
   User.create(req.body).then((user) => res.status(201).json({ user: user }));
 });
