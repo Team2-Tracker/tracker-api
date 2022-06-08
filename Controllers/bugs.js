@@ -30,6 +30,7 @@ router.get("/:id", function (req, res) {
     //Return bug as json
     .populate("user", ["username", "firstName", "lastName"])
     .then((bug) => res.status(200).json({ bug: bug }));
+  console.log(id);
 });
 
 // DELETE /:id
