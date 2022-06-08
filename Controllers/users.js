@@ -61,11 +61,18 @@ router.get("/name/:name", (req, res) => {
 // PATCH /:id
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
-    (user) => {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate("bugs", [
+      "bugName",
+      "issues",
+      "priority",
+      "timeEstimate",
+      "dateDue",
+      "createDate",
+    ])
+    .then((user) => {
       res.json({ data: user });
-    }
-  );
+    });
 });
 
 // POST /users Write the route to create an user:
@@ -79,14 +86,25 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
     req.params.bugsId,
     { user: req.params.userId },
     { new: true }
-  ).then((bug) => {
-    console.log(bug);
-    User.findByIdAndUpdate(
-      req.params.userId,
-      { $push: { bugs: req.params.bugsId } },
-      { new: true }
-    ).then((user) => res.status(200).json({ user: user }));
-  });
+  )
+    .populate("user", ["username", "firstName", "lastName"])
+    .then((bug) => {
+      console.log(bug);
+      User.findByIdAndUpdate(
+        req.params.userId,
+        { $push: { bugs: req.params.bugsId } },
+        { new: true }
+      )
+        .populate("bugs", [
+          "bugName",
+          "issues",
+          "priority",
+          "timeEstimate",
+          "dateDue",
+          "createDate",
+        ])
+        .then((user) => res.status(200).json({ user: user }));
+    });
 });
 
 router.get("/", (req, res) => {
