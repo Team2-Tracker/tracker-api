@@ -78,4 +78,12 @@ router.get("/", (req, res) => {
   res.json({ data: data });
 });
 
+// DELETE /:id
+router.delete("/:id", (req, res) => {
+  //Find bug by id and delete
+  User.findByIdAndDelete(req.params.id).then((user) => {
+    res.json({ data: user });
+  });
+});
+
 module.exports = router;
