@@ -8,6 +8,7 @@ router.get("/", function (req, res) {
   // Find all the bugs
   Bug.find({})
     // Return bugs as json
+    .populate("user", ["username", "firstName", "lastName"])
     .then((bugs) => res.status(200).json({ bugs: bugs }));
 });
 
@@ -27,6 +28,7 @@ router.get("/:id", function (req, res) {
   //Find bug by id
   Bug.findById(id)
     //Return bug as json
+    .populate("user", ["username", "firstName", "lastName"])
     .then((bug) => res.status(200).json({ bug: bug }));
 });
 
