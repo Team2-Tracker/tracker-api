@@ -1,14 +1,14 @@
 const express = require("express");
 const req = require("express/lib/request");
-// const Bug = require("../Models/bug.js");
+const Bug = require("../Models/bug.js");
 const User = require("../Models/user.js");
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   const data = User.find({}).populate("bugs");
+router.get("/", (req, res) => {
+  const data = User.find({}).populate("bugs");
 
-//   res.json({ data: data });
-// });
+  res.json({ data: data });
+});
 
 // GET /users
 router.get("/", function (req, res) {
