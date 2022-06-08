@@ -61,11 +61,18 @@ router.get("/name/:name", (req, res) => {
 // PATCH /:id
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
-    (user) => {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate("bugs", [
+      "bugName",
+      "issues",
+      "priority",
+      "timeEstimate",
+      "dateDue",
+      "createDate",
+    ])
+    .then((user) => {
       res.json({ data: user });
-    }
-  );
+    });
 });
 
 // POST /users Write the route to create an user:
