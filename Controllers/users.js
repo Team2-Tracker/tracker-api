@@ -9,7 +9,16 @@ router.get("/", function (req, res) {
   // Find all the users
   User.find()
     // Return users as json
+    .populate("bugs", [
+      "bugName",
+      "issues",
+      "priority",
+      "timeEstimate",
+      "dateDue",
+      "createDate",
+    ])
     .then((users) => res.status(200).json({ users: users }));
+  console.log("test");
 });
 
 // GET /:id
@@ -18,6 +27,14 @@ router.get("/:id", function (req, res) {
   //Find user by id
   User.findById(id)
     //Return user as json
+    .populate("bugs", [
+      "bugName",
+      "issues",
+      "priority",
+      "timeEstimate",
+      "dateDue",
+      "createDate",
+    ])
     .then((user) => res.status(200).json({ user: user }));
 });
 
@@ -59,13 +76,14 @@ router.post("/", (req, res) => {
 // Write the route to update an author
 router.patch("/:userId/bugs/:bugsId", (req, res) => {
   Bug.findByIdAndUpdate(
-    req.params.bugId,
+    req.params.bugsId,
     { user: req.params.userId },
     { new: true }
-  ).then(() => {
+  ).then((bug) => {
+    console.log(bug);
     User.findByIdAndUpdate(
       req.params.userId,
-      { $push: { bugs: req.params.bugId } },
+      { $push: { bugs: req.params.bugsId } },
       { new: true }
     ).then((user) => res.status(200).json({ user: user }));
   });
