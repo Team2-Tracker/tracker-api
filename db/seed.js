@@ -1,4 +1,4 @@
-const Bug = require("../models/bug.js");
+const Bug = require("../Models/bug.js");
 
 const seedData = require("./seedData.json");
 

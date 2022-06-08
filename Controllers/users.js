@@ -4,17 +4,40 @@ const Bug = require("../Models/bug.js");
 const User = require("../Models/user.js");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  const data = User.find({}).populate("bugs");
-
-  res.json({ data: data });
-});
-
 // GET /users
 router.get("/", function (req, res) {
   // Find all the users
   User.find()
     // Return users as json
+    .then((users) => res.status(200).json({ users: users }));
+});
+
+// GET /:id
+router.get("/:id", function (req, res) {
+  const id = req.params.id;
+  //Find user by id
+  User.findById(id)
+    //Return user as json
+    .then((user) => res.status(200).json({ user: user }));
+});
+
+// Write the route to get user by name
+router.get("/name/:name", (req, res) => {
+  User.find({
+    $or: [
+      { firstName: req.params.name },
+      { lastName: req.params.name },
+      { userName: req.params.name },
+    ],
+  })
+    .populate("bugs", [
+      "bugName",
+      "issues",
+      "priority",
+      "timeEstimate",
+      "dateDue",
+      "createDate",
+    ])
     .then((users) => res.status(200).json({ users: users }));
 });
 
@@ -27,6 +50,11 @@ router.patch("/:id", function (req, res) {
   Users.findByIdAndUpdate(id, data, { new: true }).then((users) =>
     res.status(200).json({ users: users })
   );
+});
+
+// Write the route to create an user:
+router.post("/", (req, res) => {
+  User.create(req.body).then((user) => res.status(201).json({ user: user }));
 });
 
 // Write the route to update an author
@@ -42,6 +70,12 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
       { new: true }
     ).then((user) => res.status(200).json({ user: user }));
   });
+});
+
+router.get("/", (req, res) => {
+  const data = User.find({}).populate("bugs");
+
+  res.json({ data: data });
 });
 
 module.exports = router;
