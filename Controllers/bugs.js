@@ -43,9 +43,11 @@ router.delete("/:id", (req, res) => {
 // PATCH /:id
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
-  Bug.findByIdAndUpdate(req.params.id, req.body, { new: true }).then((bug) => {
-    res.json({ data: bug });
-  });
+  Bug.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate("user", ["username", "firstName", "lastName"])
+    .then((bug) => {
+      res.json({ data: bug });
+    });
 });
 
 module.exports = router;
