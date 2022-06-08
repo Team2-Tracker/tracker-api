@@ -18,3 +18,5 @@ const bugSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Bug", bugSchema);
+
+//need to update assigned field to boolean//
