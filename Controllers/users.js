@@ -41,14 +41,13 @@ router.get("/name/:name", (req, res) => {
     .then((users) => res.status(200).json({ users: users }));
 });
 
-// PATCH /users
-router.patch("/:id", function (req, res) {
-  // get id from params
-  const id = req.params.id;
-  // get new user data from body of request
-  const data = req.body;
-  Users.findByIdAndUpdate(id, data, { new: true }).then((users) =>
-    res.status(200).json({ users: users })
+// PATCH /:id
+router.patch("/:id", (req, res) => {
+  //Find bug by id and update
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true }).then(
+    (user) => {
+      res.json({ data: user });
+    }
   );
 });
 
