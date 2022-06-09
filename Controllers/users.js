@@ -84,7 +84,7 @@ router.post("/", (req, res) => {
   User.create(req.body).then((user) => res.status(201).json({ user: user }));
 });
 
-// Write the route to update an author
+// Write the route to update an user
 router.patch("/:userId/bugs/:bugsId", (req, res) => {
   Bug.findByIdAndUpdate(
     req.params.bugsId,
