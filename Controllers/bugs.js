@@ -17,12 +17,10 @@ router.post('/', function (req, res) {
 	// get new bug data
 	const data = req.body
 	// save bugs to db
-	Bug.create(data)
-		// return bug as json
-		.then((bug) => {
-			res.status(201).json({ bug: bug })
-			console.log(bug)
-		})
+	Bug.create(data).then((bug) => {
+		res.status(201).json({ bug: bug })
+		console.log(bug)
+	})
 })
 
 // GET /:id
