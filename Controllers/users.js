@@ -91,7 +91,7 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
     { user: req.params.userId },
     { new: true }
   )
-    .populate("user", ["username", "firstName", "lastName"])
+    .populate("user", ["userName", "firstName", "lastName"])
     .then((bug) => {
       console.log(bug);
       User.findByIdAndUpdate(
