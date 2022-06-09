@@ -7,7 +7,7 @@ const bugSchema = new mongoose.Schema({
   timeEstimate: Number,
   dateDue: Date,
   dateCreated: Date,
-  assigned: String,
+  assigned: Boolean,
   isActive: Boolean,
   user: [
     {

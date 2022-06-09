@@ -16,6 +16,7 @@ router.get("/", function (req, res) {
       "timeEstimate",
       "dateDue",
       "dateCreated",
+      "assigned",
       "isActive",
     ])
     .then((users) => res.status(200).json({ users: users }));
@@ -35,6 +36,7 @@ router.get("/:id", function (req, res) {
       "timeEstimate",
       "dateDue",
       "dateCreated",
+      "assigned",
       "isActive",
     ])
     .then((user) => res.status(200).json({ user: user }));
@@ -56,6 +58,7 @@ router.get("/name/:name", (req, res) => {
       "timeEstimate",
       "dateDue",
       "dateCreated",
+      "assigned",
       "isActive",
     ])
     .then((users) => res.status(200).json({ users: users }));
@@ -72,6 +75,7 @@ router.patch("/:id", (req, res) => {
       "timeEstimate",
       "dateDue",
       "dateCreated",
+      "assigned",
       "isActive",
     ])
     .then((user) => {
@@ -88,7 +92,7 @@ router.post("/", (req, res) => {
 router.patch("/:userId/bugs/:bugsId", (req, res) => {
   Bug.findByIdAndUpdate(
     req.params.bugsId,
-    { user: req.params.userId },
+    { user: objectId(req.params.userId) },
     { new: true }
   )
     .populate("user", ["userName", "firstName", "lastName"])
@@ -96,7 +100,7 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
       console.log(bug);
       User.findByIdAndUpdate(
         req.params.userId,
-        { $push: { bugs: req.params.bugsId } },
+        { $push: { bugs: objectId(req.params.bugsId) } },
         { new: true }
       )
         .populate("bugs", [
@@ -106,6 +110,7 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
           "timeEstimate",
           "dateDue",
           "dateCreated",
+          "assigned",
           "isActive",
         ])
         .then((user) => res.status(200).json({ user: user }));
