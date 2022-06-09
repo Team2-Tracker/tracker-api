@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
   // Find all the bugs
   Bug.find({})
     // Return bugs as json
-    .populate("user", ["username", "firstName", "lastName"])
+    .populate("user", ["userName", "firstName", "lastName"])
     .then((bugs) => res.status(200).json({ bugs: bugs }));
 });
 
@@ -28,7 +28,7 @@ router.get("/:id", function (req, res) {
   //Find bug by id
   Bug.findById(id)
     //Return bug as json
-    .populate("user", ["username", "firstName", "lastName"])
+    .populate("user", ["userName", "firstName", "lastName"])
     .then((bug) => res.status(200).json({ bug: bug }));
   console.log(id);
 });
@@ -45,7 +45,7 @@ router.delete("/:id", (req, res) => {
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
   Bug.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .populate("user", ["username", "firstName", "lastName"])
+    .populate("user", ["userName", "firstName", "lastName"])
     .then((bug) => {
       res.json({ data: bug });
     });
