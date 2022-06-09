@@ -92,7 +92,7 @@ router.post("/", (req, res) => {
 router.patch("/:userId/bugs/:bugsId", (req, res) => {
   Bug.findByIdAndUpdate(
     req.params.bugsId,
-    { user: objectId(req.params.userId) },
+    { user: req.params.userId },
     { new: true }
   )
     .populate("user", ["userName", "firstName", "lastName"])
@@ -100,7 +100,7 @@ router.patch("/:userId/bugs/:bugsId", (req, res) => {
       console.log(bug);
       User.findByIdAndUpdate(
         req.params.userId,
-        { $push: { bugs: objectId(req.params.bugsId) } },
+        { $push: { bugs: req.params.bugsId } },
         { new: true }
       )
         .populate("bugs", [
