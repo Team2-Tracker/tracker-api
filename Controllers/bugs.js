@@ -24,7 +24,7 @@ router.post("/", function (req, res) {
 
 // GET /:id
 router.get("/:id", function (req, res) {
-  const id = req.params.id;
+  const id = objectId(req.params.id);
   //Find bug by id
   Bug.findById(id)
     //Return bug as json
@@ -36,7 +36,7 @@ router.get("/:id", function (req, res) {
 // DELETE /:id
 router.delete("/:id", (req, res) => {
   //Find bug by id and delete
-  Bug.findByIdAndDelete(req.params.id).then((bug) => {
+  Bug.findByIdAndDelete(objectId(req.params.id)).then((bug) => {
     res.json({ data: bug });
   });
 });
@@ -44,7 +44,7 @@ router.delete("/:id", (req, res) => {
 // PATCH /:id
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
-  Bug.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  Bug.findByIdAndUpdate(objectId(req.params.id), req.body, { new: true })
     .populate("user", ["userName", "firstName", "lastName"])
     .then((bug) => {
       res.json({ data: bug });

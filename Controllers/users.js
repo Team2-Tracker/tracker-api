@@ -25,7 +25,7 @@ router.get("/", function (req, res) {
 
 // GET /:id
 router.get("/:id", function (req, res) {
-  const id = req.params.id;
+  const id = objectId(req.params.id);
   //Find user by id
   User.findById(id)
     //Return user as json
@@ -67,7 +67,7 @@ router.get("/name/:name", (req, res) => {
 // PATCH /:id
 router.patch("/:id", (req, res) => {
   //Find bug by id and update
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  User.findByIdAndUpdate(objectId(req.params.id), req.body, { new: true })
     .populate("bugs", [
       "bugName",
       "issues",
@@ -91,16 +91,16 @@ router.post("/", (req, res) => {
 // Write the route to update an user
 router.patch("/:userId/bugs/:bugsId", (req, res) => {
   Bug.findByIdAndUpdate(
-    req.params.bugsId,
-    { user: req.params.userId },
+    objectId(req.params.bugsId),
+    { user: objectId(req.params.userId) },
     { new: true }
   )
     .populate("user", ["userName", "firstName", "lastName"])
     .then((bug) => {
       console.log(bug);
       User.findByIdAndUpdate(
-        req.params.userId,
-        { $push: { bugs: req.params.bugsId } },
+        objectId(req.params.userId),
+        { $push: { bugs: objectId(req.params.bugsId) } },
         { new: true }
       )
         .populate("bugs", [
@@ -126,7 +126,7 @@ router.get("/", (req, res) => {
 // DELETE /:id
 router.delete("/:id", (req, res) => {
   //Find bug by id and delete
-  User.findByIdAndDelete(req.params.id).then((user) => {
+  User.findByIdAndDelete(objectId(req.params.id)).then((user) => {
     res.json({ data: user });
   });
 });
