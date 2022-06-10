@@ -65,5 +65,40 @@ Verb | Route | Action | Description
 GET | / | index | Show all users
 PATCH |  /:userid:/bugid | update | Update an existing user by ID to add a bug by ID
 
+## Code Snippet
+---
+`
+// Write the route to update an user
+router.patch('/:userId/bugs/:bugsId', (req, res) => {
+	Bug.findByIdAndUpdate(
+		req.params.bugsId,
+		{ user: req.params.userId },
+		{ new: true }
+	)
+		.populate('user', ['userName', 'firstName', 'lastName'])
+		.then((bug) => {
+			console.log(bug)
+			User.findByIdAndUpdate(
+				req.params.userId,
+				{ $push: { bugs: req.params.bugsId } },
+				{ new: true }
+			)
+				.populate('bugs', [
+					'bugName',
+					'issues',
+					'priority',
+					'timeEstimate',
+					'dateDue',
+					'dateCreated',
+					'assigned',
+					'isActive'
+				])
+				.then((user) => {
+					res.status(200).json({ user: user })
+					console.log(user)
+				})
+		})
+})
+`
 
-[Back to top](#section_name)<a name="section_name"></a>
+[Back to top](#welcome-to-the-tracker-api)<a name="section_name"></a>
