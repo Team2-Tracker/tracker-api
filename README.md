@@ -1,5 +1,6 @@
 # Welcome to the Tracker-API
 
+![tracker](https://user-images.githubusercontent.com/102768257/172967927-a83789b6-71ff-441f-8425-92970a85b75b.png)
 ___
 ## About Tracker
 Tracker is an interactive app that tracks bugs/issues and can assign them to users for comments and resolution. A clean, modern interface using MUI components and reactive styling to provide a seamless mobile-first experience. This API supports the usage of our front-end and mobile application including <a href="https://nodejs.org/en/about/" target="_blank">Node.js</a>, <a href="https://www.mongodb.com/what-is-mongodb" target="_blank">MongoDB</a>, <a href="https://expressjs.com/">Express</a>, and  <a href="https://www.heroku.com/what" target="_blank">Heroku</a>.
@@ -36,7 +37,7 @@ ___
 - Comment:[{comment db reference}] <- (add, but implement post MVP)
 - Assigned: {link to user db}
 
-    <a href="https://vast-tundra-01728.herokuapp.com/bugs" target="_blank">Example</a>
+    <a href="https://vast-tundra-01728.herokuapp.com/bugs" target="_blank">Example Bugs</a>
 
  **User Model**
 
@@ -45,7 +46,7 @@ ___
 - lastName: String
 - Bugs: {db bugs reference}
 
-    <a href="https://vast-tundra-01728.herokuapp.com/users" target="_blank">Example</a>
+    <a href="https://vast-tundra-01728.herokuapp.com/users" target="_blank">Example Users</a>
 ___
 ### **Bug Controller**
 
@@ -58,7 +59,7 @@ POST | / |new | Add a new bug | --- | --- | ---
 PATCH | /:bugid | update |Update an existing bug by ID| --- | --- | ---
 DELETE | /:bugid | destroy |Delete a bug by ID | --- | --- |
 
-**User Controller**
+### **User Controller**
 
 Verb | Route | Action | Description
 --- | --- | --- | ---
@@ -67,7 +68,8 @@ PATCH |  /:userid:/bugid | update | Update an existing user by ID to add a bug b
 
 ## Code Snippet
 ---
-`
+
+```
 // Write the route to update an user
 router.patch('/:userId/bugs/:bugsId', (req, res) => {
 	Bug.findByIdAndUpdate(
@@ -99,6 +101,6 @@ router.patch('/:userId/bugs/:bugsId', (req, res) => {
 				})
 		})
 })
-`
+```
 
 [Back to top](#welcome-to-the-tracker-api)<a name="section_name"></a>
